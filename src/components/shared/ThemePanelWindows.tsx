@@ -26,7 +26,7 @@ export function ThemePanelWindows({}: ThemePanelWindowsProps) {
   }, [open]);
 
   return (
-    <div className="fixed bottom-0 right-0">
+    <div className="fixed bottom-0 right-0 z-[50]">
       {  !open?<Button onClick={() => setOpen(true)}>Theme panel</Button>:
       <ThemePanel hidden={!open} />}
     </div>
