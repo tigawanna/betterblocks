@@ -11,6 +11,10 @@ export function ThemePanelWindows({}: ThemePanelWindowsProps) {
   // quickly show/hide using ⌘C
   React.useEffect(() => {
     function handleKeydown(event: KeyboardEvent) {
+        // handle close on esc key
+        if(event.key === "Escape") {
+            setOpen(false);
+        }
       const isCmdC = event.ctrlKey && event.key === "c" && !event.shiftKey && !event.altKey;
 
       if (isCmdC && window.getSelection()?.toString() === "") {
