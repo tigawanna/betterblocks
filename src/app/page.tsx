@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Flex, Text, Button } from "@radix-ui/themes";
+
 import { Listings } from '@/components/listings/Listings';
 import { ListingsCardLoader } from '@/components/listings/ListingsCardLoader';
 import { Suspense } from 'react';

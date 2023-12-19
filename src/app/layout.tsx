@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Theme, ThemePanel } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
-import { ThemePanelWindows } from "../components/shared/ThemePanelWindows";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Theme>
+
           {children}
-          <ThemePanelWindows />
-        </Theme>
+
       </body>
     </html>
   );
