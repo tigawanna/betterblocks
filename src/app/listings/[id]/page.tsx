@@ -8,12 +8,28 @@ import {  expand } from "typed-pocketbase";
 import ReactLeafletMapCard from "@/components/location/ReactLeafletMapCard"
 import { FaWhatsapp } from "react-icons/fa";
 import { server_component_pb } from "@/lib/pb/utils/server_component_pb";
+import { Metadata } from "next";
 
 export interface PageProps {
   params: { id: string };
   searchParams: {
     q?: string;
     p?: number;
+  };
+}
+
+
+export async function generateMetadata({searchParams,params:{id}}: PageProps): Promise<Metadata> {
+    const { pb } = await server_component_pb();
+    const res = await tryCatchWrapper(
+      pb.collection("mashamba_listings").getOne(id, {
+        expand: expand({ owner: true }),
+      })
+    );
+    const listing = res.data;
+  return {
+    title: `${listing?.location}`,
+    description: `${listing?.description}`,
   };
 }
 export default async function OneListingPage({ params: { id } }: PageProps) {
@@ -36,7 +52,7 @@ export default async function OneListingPage({ params: { id } }: PageProps) {
   
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
+    <div className="w-full h-full flex flex-col items-center justify-center ">
 
       <div className="w-full h-full flex flex-col items-center  gap-5">
         <div

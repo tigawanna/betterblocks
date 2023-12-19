@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Block",
+	name: "Better Blocks",
 	description: "Your premium property discovery platform",
 	navItems: [
 		{ label: "Listings", href: "/listings" },

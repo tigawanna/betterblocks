@@ -1,5 +1,6 @@
 import { Listings } from "@/components/listings/Listings";
 import { ListingsCardLoader } from "@/components/listings/ListingsCardLoader";
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 
@@ -10,6 +11,11 @@ export interface PageProps {
     p?: number;
   };
 }
+export const metadata: Metadata = {
+  title: "Listings",
+  description: "Curated list of listings for sale",
+};
+
 
 export default async function ListingsPage({ searchParams }: PageProps) {
 
