@@ -1,4 +1,5 @@
-import { useUser } from "@/lib/rakkas/hooks/useUser";
+
+import { useUser } from "@/lib/pb/utils/useUser";
 import { UserCircle2 } from "lucide-react";
 
 interface UserCircleProps {}
