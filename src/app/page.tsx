@@ -1,8 +1,7 @@
-import Image from 'next/image'
-
 import { Listings } from '@/components/listings/Listings';
 import { ListingsCardLoader } from '@/components/listings/ListingsCardLoader';
 import { Suspense } from 'react';
+import { HeroSection } from '@/components/root/HeroSection';
 
 export interface PageProps {
   params: Record<string, string | undefined>;
@@ -15,7 +14,8 @@ export interface PageProps {
 export default function HomePage({ searchParams }: PageProps) {
   return (
     <section className="flex flex-col  h-full gap-2 min-h-screen">
-      {/* <HeroSection /> */}
+      <HeroSection />
+
       <Suspense fallback={<ListingsCardLoader no={12} />}>
         <Listings searchParams={searchParams} show_controls={false} />
       </Suspense>

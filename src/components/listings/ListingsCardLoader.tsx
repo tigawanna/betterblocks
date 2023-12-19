@@ -13,7 +13,7 @@ export function ListingsCardLoader({ no }: ListingsCardLoaderProps) {
     justify-center ">
         {[...Array(no)].map((_, i) => {
           return (
-            <Card className="w-full h-[400px] space-y-5 p-4">
+            <Card  key={i} className="w-full h-[400px] space-y-5 p-4">
               <div className="h-[250px] rounded-lg bg-gray-300 animate-pulse"></div>
 
               <div className="space-y-3">
