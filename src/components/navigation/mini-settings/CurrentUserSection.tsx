@@ -1,7 +1,6 @@
 
 import { Button } from "@/components/shadcn/ui/button";
 import { Loader, LogOut } from "lucide-react";
-import { useUser } from "@/lib/rakkas/hooks/useUser";
 import {
   Avatar,
   AvatarFallback,
@@ -9,6 +8,7 @@ import {
 } from "@/components/shadcn/ui/avatar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useUser } from "@/lib/pb/utils/useUser";
 
 interface CurrentUserSectionProps {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -59,11 +59,11 @@ console.log({pathname})
         <Button
           onClick={() => logoutUser()}
           className="w-[80%] btn btn-sm btn-outline btn-error text-xs"
-          disabled={user_mutation.isLoading}
+          disabled={user_mutation.isPending}
         >
           Log out
           <LogOut className="w-4 h-4 ml-2" />
-          {user_mutation.isLoading && (
+          {user_mutation.isPending && (
             <Loader className="w-4 h-4  animate-spin" />
           )}
         </Button>

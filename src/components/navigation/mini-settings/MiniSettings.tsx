@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import {
   Avatar,
@@ -13,11 +14,12 @@ import {
 } from "@/components/shadcn/ui/dropdown-menu";
 import { CurrentUserSection } from "./CurrentUserSection";
 import { ThemeToggle } from "./ThemeToggle";
-import { useUser } from "@/lib/rakkas/hooks/useUser";
+import { useUser } from "@/lib/pb/utils/useUser";
+
 
 interface MiniSettingsModalProps {}
 
-export function MiniSettingsModal({}: MiniSettingsModalProps) {
+export default function MiniSettingsModal({}: MiniSettingsModalProps) {
   const { user } = useUser();
 
   const [open, setOpen] = useState(false);

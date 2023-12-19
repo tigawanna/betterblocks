@@ -5,16 +5,11 @@ import { MashambaUserCreate, Schema } from "./db-types";
 import { tryCatchWrapper } from "@/utils/helpers/async";
 import { PB_URL } from "../env";
 import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
+
 
 export type PocketBaseClient = TypedPocketBase<Schema>;
 
-export async function initPocketbaseFromCookie() {
-  const pb = new PocketBase(PB_URL) as PocketBaseClient;
-  // load state from cookie, won't refresh auth, middleware handles that.
-  pb.authStore.loadFromCookie(cookies().get("pb_auth")?.value || "");
-  return pb;
-}
+
 
 export async function initPocketBaseFromRequest(request: NextRequest) {
   const pb = new PocketBase(PB_URL) as PocketBaseClient;
