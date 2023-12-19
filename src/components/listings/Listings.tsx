@@ -6,8 +6,8 @@ import { tryCatchWrapper } from "@/utils/helpers/async";
 import { ListingsPagination } from "./controls/ListingsPagination";
 import { ListingsSearchbar } from "./controls/ListingsSearchbar";
 import { server_component_pb } from "@/lib/pb/utils/server_component_pb";
-import { Card, Flex, Inset } from "@radix-ui/themes";
 import NextImage from "next/image";
+import { Card } from "../shadcn/ui/card";
 
 interface ListingsProps {
   show_controls?: boolean;
@@ -74,12 +74,7 @@ export function ListingsCard({ listing }: ListingsCardProps) {
       href={`/listings/${listing.id}`}
       className=" w-full flex flex-col items-start rounded-2xl hover:brightness-75">
       <Card className="w-full h-[400px] flex flex-col justify-between ">
-        {/* <CardHeader className="absolute z-10 top-1 flex-col items-start">
-        <h4 className="text-white/90 font-medium text-3xl bg-slate-700/40 px-3 ">
-          {listing.location}
-        </h4>
-      </CardHeader> */}
-        <div className=" min-hh-[200px] h-[60%] w-full flex items-center justify-center relative">
+      <div className="h-[250px] w-full flex items-center justify-center relative">
           {listing.status === "sold" ? (
             <div
               className="w-full h-full absolute font-bold font-serif
@@ -87,19 +82,17 @@ export function ListingsCard({ listing }: ListingsCardProps) {
               SOLD
             </div>
           ) : null}
-          <Inset clip="padding-box" side="top" pb="current">
+          <div>
             <NextImage
               alt={listing?.location}
-              className="z-0 w-full h-full object-cover"
+              className="h-[250px]"
               src={img_url}
               width={500}
               height={500}
             />
-          </Inset>
+          </div>
         </div>
-        <Flex
-          className="z-10 border-t-1 
-      border-default-600 dark:border-default-100 ">
+        <div className="p-2 border-t-1 bg-base-200 h-full">
           <div className="flex flex-col gap-2 items-center w-full h-full">
             <div className="flex  gap-2 items-center justify-between w-full">
               <p className="text-3xl font-bold">{listing.location}</p>
@@ -111,7 +104,7 @@ export function ListingsCard({ listing }: ListingsCardProps) {
               <p className="text-sm line-clamp-1 font-serif pb-5 ">{listing.description}</p>
             </div>
           </div>
-        </Flex>
+        </div>
       </Card>
     </Link>
   );

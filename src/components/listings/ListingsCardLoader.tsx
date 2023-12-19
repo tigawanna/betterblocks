@@ -1,4 +1,5 @@
-import { Card } from "@radix-ui/themes";
+import { Card } from "../shadcn/ui/card";
+
 
 interface ListingsCardLoaderProps {
   no: number;

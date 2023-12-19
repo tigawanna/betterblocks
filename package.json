@@ -22,6 +22,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@radix-ui/themes": "^2.0.2",
+    "clsx": "^2.0.0",
     "lucide-react": "^0.298.0",
     "next": "14.0.4",
     "pocketbase": "^0.20.1",
@@ -29,6 +30,7 @@
     "react-dom": "^18",
     "react-icons": "^4.12.0",
     "react-responsive-pagination": "^2.3.0",
+    "tailwind-merge": "^2.1.0",
     "typed-pocketbase": "^0.0.8"
   },
   "devDependencies": {
