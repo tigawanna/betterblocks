@@ -1,17 +1,13 @@
 import Link from "next/link";
 import  MiniSettingsModal  from "./mini-settings/NoSSRMiniSettings";
 import { Castle } from "lucide-react";
+import { siteConfig } from "@/utils/site";
 
 
 interface ToolbarProps {}
 
 export function Toolbar({}: ToolbarProps) {
-  const links = [
-    {name: "home", url: "/"},
-    {name: "listings", url: "/listings"},
-    {name: "about", url: "/about"},
-    {name: "showcase", url: "/showcase"},
-  ]
+  const links = siteConfig.navItems
   return (
     <header
       className="w-full h-12 z-50 flex flex-col  justify-between items-center  
@@ -23,8 +19,8 @@ export function Toolbar({}: ToolbarProps) {
 
         <div className="flex gap-3 divider-vertical ">
           {links.map((link) => (
-            <Link key={link.name} href={link.url} className="hover:text-secondary">
-              {link.name}
+            <Link key={link.label} href={link.href} className="hover:text-secondary">
+              {link.label}
             </Link>
           ))}
         </div>

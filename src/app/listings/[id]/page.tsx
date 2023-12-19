@@ -33,15 +33,14 @@ export default async function OneListingPage({ params: { id } }: PageProps) {
     });
   });
 
-  const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+  
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <h2 className="text-3xl">{id}</h2>
-      <div className="w-full h-full flex flex-col items-center  gap-2">
+
+      <div className="w-full h-full flex flex-col items-center  gap-5">
         <div
-          className="w-full  flex flex-col lg:flex-row  items-center lg:items-start justify-between
+          className="w-full  flex flex-col lg:flex-row   justify-center gap-2
          rounded-2xl pl-10 px-5 pt-3">
           <div className="lg:w-[50%]  ">
             <GoodImageCarousel
@@ -55,24 +54,14 @@ export default async function OneListingPage({ params: { id } }: PageProps) {
               }}
             />
           </div>
-          <div className="font-serif p-5 w-[90%] lg:w-[40%] flex flex-col gap-2">
+          <div className="font-serif p-5 w-full lg:w-[40%] flex flex-col gap-2 bg-base-200 rounded-lg ">
             <div className="flex  gap-2 items-center justify-between w-full">
               <p className="text-3xl font-bold">{listing?.location}</p>
               <p className="text-sm rounded-lg border-t">{listing?.amenities?.size}</p>
               <p className=" text-2xl">{listing?.price.toLocaleString("en-US")} Ksh</p>
             </div>
 
-            {/* <p className={hideDetails ? "text-sm line-clamp-5 mt-4" : "text-sm mt-4"}>
-              {listing?.description}
-            </p>
-            <button onClick={() => setHideDetails(!hideDetails)} className=" p-1">
-              <TheIcon
-                Icon={hideDetails ? GrDown : GrUp}
-                iconAction={() => {
-                  setHideDetails(!hideDetails);
-                }}
-              />
-            </button> */}
+
 
             <div className="border-t pt-3">
               <span className="text-sm font-semibold">Owner: {listing?.expand.owner.name}</span>
@@ -101,14 +90,7 @@ export default async function OneListingPage({ params: { id } }: PageProps) {
             display_only={true}
             coords={{ lat: listing?.longitude, lng: listing?.longitude }}
           />
-          {/* <div className="w-[90%] md:w-[70%] p-5 ">
-            <ClientSuspense fallback="loading">
-              <ReactLeafletMapCard
-                display_only={true}
-                coords={{ lat: listing.longitude, lng: listing.longitude }}
-              />
-            </ClientSuspense>
-          </div> */}
+
         </div>
       </div>
     </div>
