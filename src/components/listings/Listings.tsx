@@ -31,7 +31,10 @@ export async function Listings({
   const listings = show_controls ? res.data?.items : res.data?.items.slice(0, 3);
   const page_details = res.data;
   return (
-    <div className="w-full h-full flex flex-col items-center ">
+    <div className="w-full h-full flex flex-col items-center gap-2">
+
+
+
       {show_controls && <ListingsSearchbar />}
       <div className="w-[90%] p-2 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-3 lg:gap-4">
         {listings &&

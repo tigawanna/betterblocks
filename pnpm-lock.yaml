@@ -102,7 +102,7 @@ devDependencies:
     version: 10.4.16(postcss@8.4.32)
   daisify-shadcn:
     specifier: ^0.0.1
-    version: 0.0.1(postcss@8.4.32)(tailwindcss@3.3.7)(typescript@5.3.3)
+    version: 0.0.1(postcss@8.4.32)(tailwindcss@3.4.0)(typescript@5.3.3)
   daisyui:
     specifier: ^4.4.20
     version: 4.4.20(postcss@8.4.32)
@@ -116,11 +116,11 @@ devDependencies:
     specifier: ^8
     version: 8.4.32
   tailwindcss:
-    specifier: ^3.3.0
-    version: 3.3.7
+    specifier: ^3.4.0
+    version: 3.4.0
   tailwindcss-animate:
     specifier: ^1.0.7
-    version: 1.0.7(tailwindcss@3.3.7)
+    version: 1.0.7(tailwindcss@3.4.0)
   typescript:
     specifier: ^5
     version: 5.3.3
@@ -2062,13 +2062,13 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /daisify-shadcn@0.0.1(postcss@8.4.32)(tailwindcss@3.3.7)(typescript@5.3.3):
+  /daisify-shadcn@0.0.1(postcss@8.4.32)(tailwindcss@3.4.0)(typescript@5.3.3):
     resolution: {integrity: sha512-q/zy/g8TiOBNX8O6Rrd/Uym75ZAnNOdh+e7sZwLr55QPvquthkwcBkfjEnu10tBznhLcnoracRmIUEXj5ohK+Q==}
     engines: {node: '>=17.x', npm: '>=8.x <9'}
     peerDependencies:
       tailwindcss: '>=3.X'
     dependencies:
-      tailwindcss: 3.3.7
+      tailwindcss: 3.4.0
       tsup: 7.2.0(postcss@8.4.32)(typescript@5.3.3)
     transitivePeerDependencies:
       - '@swc/core'
@@ -4093,16 +4093,16 @@ packages:
       '@babel/runtime': 7.23.6
     dev: false
 
-  /tailwindcss-animate@1.0.7(tailwindcss@3.3.7):
+  /tailwindcss-animate@1.0.7(tailwindcss@3.4.0):
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
-      tailwindcss: 3.3.7
+      tailwindcss: 3.4.0
     dev: true
 
-  /tailwindcss@3.3.7:
-    resolution: {integrity: sha512-pjgQxDZPvyS/nG3ZYkyCvsbONJl7GdOejfm24iMt2ElYQQw8Jc4p0m8RdMp7mznPD0kUhfzwV3zAwa80qI0zmQ==}
+  /tailwindcss@3.4.0:
+    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

@@ -115,3 +115,12 @@
         animation-duration: 15s;
     }
 }
+
+.neumo{
+
+  @apply bg-gradient-to-r from-base-200 to-accent;
+
+
+            
+}
+

@@ -1,19 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
-  },
-  plugins: [
-    require("daisyui"),
-    require("tailwindcss-animate"),
-    require("daisify-shadcn"),
+    extend: {
 
-  ],
+    },
+  },
+  plugins: [require("daisyui"), require("tailwindcss-animate"), require("daisify-shadcn")],
   daisyui: {
     //  3 themes
     themes: [
@@ -55,12 +49,9 @@ export default {
           "--tab-border": "2px",
           "--tab-radius": ".5rem",
         },
-
       },
     ],
-
-
   },
-}
+};
 
 
