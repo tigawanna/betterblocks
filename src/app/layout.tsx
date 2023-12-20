@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { TanstackProvider } from "@/lib/tanstack/Provider";
-import { Toolbar } from "@/components/navigation/Toolbar";
 import { Mail, Phone } from "lucide-react";
 import { FaFacebookF, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { siteConfig } from "@/utils/site";
 import { PageContainer } from "@/components/navigation/drawer/PageContainer";
 
+import "./globals.css";
+import "react-responsive-pagination/themes/minimal.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,7 +1,7 @@
 import { getFileURL } from "@/lib/pb/client";
 import { MashambaListingsResponse, MashambaOwnerResponse } from "@/lib/pb/db-types";
 import Link from "next/link";
-import { TypedRecord, expand, like, or } from "typed-pocketbase";
+import { TypedRecord, expand, like, or, sort } from "typed-pocketbase";
 import { tryCatchWrapper } from "@/utils/helpers/async";
 import { ListingsPagination } from "./controls/ListingsPagination";
 import { ListingsSearchbar } from "./controls/ListingsSearchbar";
@@ -26,6 +26,7 @@ export async function Listings({
     pb.collection("mashamba_listings").getList(p, 12, {
       filter: or(like("location", q), like("description", q), like("owner.name", q)),
       expand: expand({ owner: true }),
+      sort:sort("-created"),
     })
   );
   const listings = show_controls ? res.data?.items : res.data?.items.slice(0, 3);
@@ -77,7 +78,7 @@ export function ListingsCard({ listing }: ListingsCardProps) {
       href={`/listings/${listing.id}`}
       className=" w-full flex flex-col items-start rounded-2xl hover:brightness-75">
       <Card className="w-full h-[400px] flex flex-col justify-between ">
-      <div className="h-[250px] w-full flex items-center justify-center relative">
+        <div className="h-[250px] w-full flex items-center justify-center relative">
           {listing.status === "sold" ? (
             <div
               className="w-full h-full absolute font-bold font-serif
@@ -99,12 +100,12 @@ export function ListingsCard({ listing }: ListingsCardProps) {
           <div className="flex flex-col gap-2 items-center w-full h-full">
             <div className="flex  gap-2 items-center justify-between w-full">
               <p className="text-3xl font-bold">{listing.location}</p>
-              <p className="text-sm rounded-lg border-t">{listing.amenities?.size}</p>
-              <p className=" text-lg">{listing.price.toLocaleString("en-US")} Ksh</p>
+              <p className=" rounded-lg ">{listing.amenities?.size}</p>
+              <p className=" text-lg text-secondary">{listing.price.toLocaleString("en-US")} Ksh</p>
             </div>
             <div className="flex flex-col  items-start justify-between w-full gap-2">
-              <span className="text-sm flex font-semibold">Owner: {listing.expand.owner.name}</span>
-              <p className="text-sm line-clamp-1 font-serif pb-5 ">{listing.description}</p>
+              <span className=" flex font-semibold">Owner: {listing.expand.owner.name}</span>
+              <p className="text-sm line-clamp-1 pb-5 font-serif">{listing.description}</p>
             </div>
           </div>
         </div>

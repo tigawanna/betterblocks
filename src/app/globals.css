@@ -24,6 +24,11 @@
 
 @layer base {
   :root {
+    --pagination-color: theme(colors.secondary);
+        --pagination-bg:theme(colors.base-300);
+    --pagination-hover-color: theme(colors.secondary);
+
+
     --popover: theme(colors.base-200);
     --popover-foreground: theme(colors.base-content);
 
@@ -55,6 +60,10 @@
     accent-foreground ->accent-content 
     
     */
+    --pagination-color: theme(colors.base-200);
+    --pagination-bg:theme(colors.base-300);
+    --pagination-hover-color: theme(colors.secondary);
+
 
     --popover: theme(colors.base-200);
     --popover-foreground: theme(colors.base-content);
@@ -116,11 +125,5 @@
     }
 }
 
-.neumo{
 
-  @apply bg-gradient-to-r from-base-200 to-accent;
-
-
-            
-}
 

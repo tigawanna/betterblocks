@@ -105,6 +105,38 @@ export type PocketbookReactionsCollection = {
   };
 };
 
+
+export type DistanceTofaclities =
+  | "less than 20 minutes away"
+  | "20 to 40 minutes away"
+  | "more than 40 minutes away";
+
+export interface ListingAmenities {
+  type?: "land" | "house" | "apartment";
+  size?: string;
+
+  // land psecific
+  water_source?: "piped" | "borehole" | "other";
+  elecricity_source?: "utility pole" | "generator" | "other";
+
+  closest_school?: DistanceTofaclities;
+  closest_hospital?: DistanceTofaclities;
+  closest_police_station?: DistanceTofaclities;
+  closest_town?: DistanceTofaclities;
+
+  //  house or appartment specific
+  gated_community?: boolean;
+  pavements?: boolean;
+  street_lights?: boolean;
+  parking?: boolean;
+
+  bedrooms?: number;
+  bathrooms?: number;
+  garages?: number;
+  fireplace?: number;
+  swimming_pool?: number;
+}
+
 // ===== mashamba_listings =====
 
 export type MashambaListingsResponse = {
@@ -116,6 +148,7 @@ export type MashambaListingsResponse = {
   amenities?: any;
   owner?: string;
   price: number;
+  type:"land"|"house";
   status: "available" | "sold";
 } & BaseCollectionRecord;
 
@@ -128,6 +161,7 @@ export type MashambaListingsCreate = {
   amenities?: any;
   owner?: string;
   price: number;
+  type: "land" | "house";
   status: "available" | "sold";
 };
 
@@ -147,6 +181,7 @@ export type MashambaListingsUpdate = {
   price?: number;
   "price+"?: number;
   "price-"?: number;
+  type: "land" | "house";
   status?: "available" | "sold";
 };
 

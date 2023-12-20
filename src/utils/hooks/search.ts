@@ -38,5 +38,5 @@ export function useSearchWithQuery(opts:UseSearchWithQuery={
       });
     }
   }, [debouncedValue]);
-  return { debouncedValue, isDebouncing, keyword, setKeyword };
+  return { debouncedValue, isDebouncing, keyword, setKeyword,pathname,searchParams };
 }
