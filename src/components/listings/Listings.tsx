@@ -8,39 +8,41 @@ import { ListingsSearchbar } from "./controls/ListingsSearchbar";
 import { server_component_pb } from "@/lib/pb/utils/server_component_pb";
 import NextImage from "next/image";
 import { Card } from "../shadcn/ui/card";
+import { ListingsLookup } from "./ListingsLookup";
 
 interface ListingsProps {
   show_controls?: boolean;
   searchParams: {
     q?: string;
-    t?:""|"house"|"land";
+    t?: "" | "house" | "land";
     p?: number;
   };
 }
 
 export async function Listings({
   show_controls = true,
-  searchParams: { p = 1, q = "",t="" },
+  searchParams: { p = 1, q = "", t = "" },
 }: ListingsProps) {
   const { pb } = await server_component_pb();
   const res = await tryCatchWrapper(
     pb.collection("mashamba_listings").getList(p, 12, {
-      filter:and( 
+      filter: and(
         or(like("location", q), like("description", q), like("owner.name", q)),
-        like("type",t)
-        ),
+        like("type", t)
+      ),
       expand: expand({ owner: true }),
-      sort:sort("-created"),
+      sort: sort("-created"),
     })
   );
   const listings = show_controls ? res.data?.items : res.data?.items.slice(0, 3);
   const page_details = res.data;
   return (
-    <div className="w-full h-full flex flex-col items-center gap-2">
-
-
-
-      {show_controls && <ListingsSearchbar />}
+    <div className="w-full h-full flex flex-col items-center gap-5">
+      {/* 
+      {show_controls && <ListingsSearchbar />} */}
+      <div className="w-[90%] px-5 sticky top-14 z-50">
+        {show_controls && <ListingsLookup auto_replace />}
+      </div>
       <div className="w-[90%] p-2 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-3 lg:gap-4">
         {listings &&
           listings.map((land) => {

@@ -1,14 +1,12 @@
 "use client";
 
-import { useSearchWithQuery } from "@/utils/hooks/search";
 import { Search, Loader, X } from "lucide-react";
 import { Input } from "../shadcn/ui/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ListingTypeselect } from "./controls/ListingTypeselect";
 import { useDebouncedValue } from "@/utils/hooks/debounce";
-import { useUpdateSearchParams } from "@/utils/hooks/useUpdateSearchParams";
+
 import {
   Select,
   SelectContent,
@@ -18,29 +16,33 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/shadcn/ui/select";
+import { useListingsFilter } from "@/utils/hooks/useListingsFilters";
 
-interface ListingsLookupProps {}
+interface ListingsLookupProps {
+  auto_replace?:boolean
+}
 
-export function ListingsLookup({}: ListingsLookupProps) {
+export function ListingsLookup({auto_replace=false}: ListingsLookupProps) {
 
   const searchParams = useSearchParams();
-    const [type, setType] = useState("");
-    const [keyword, setKeyword] = useState(searchParams?.get("q")??"");
+    const [type, setType] = useState<"" | "house" | "land">("");
+    const [keyword, setKeyword] = useState("");
     const { debouncedValue, isDebouncing } = useDebouncedValue(keyword, 2000);
-    useUpdateSearchParams({ queries: { type,q:debouncedValue } });
+    // useUpdateSearchParams({ queries: { type,q:debouncedValue } });
+    useListingsFilter({ queries:{t:type, q: debouncedValue} });
 
 
   return (
     <div className="w-full  flex flex-col items-center justify-center gap-2 ">
       <div className="w-full flex flex-col md:flex-row items-center justify-center gap-2 ">
-        <div className="w-full  flex items-center  gap-3 ">
+        <div className="w-full  flex items-center  gap-3 shadow-accent shadow border">
           <Search height="16" width="16" className="" />
           <div className="w-full flex relative items-center">
             <Input
-              placeholder="Search by keyword"
+              placeholder="Search for listings"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
-              className="w-full drop-shadow-md"
+              className="w-full bg-base-100 "
             />
             {isDebouncing && <Loader className="animate-spin absolute right-[5%]" />}
             {!isDebouncing && keyword?.length > 0 && (
@@ -49,7 +51,7 @@ export function ListingsLookup({}: ListingsLookupProps) {
           </div>
         </div>
         <div className="  flex items-center  gap-2 min-w-24">
-          <Select onValueChange={setType} value={type}>
+          <Select onValueChange={(e: "" | "house" | "land") => setType(e)} value={type}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="listings type" />
             </SelectTrigger>
@@ -64,11 +66,11 @@ export function ListingsLookup({}: ListingsLookupProps) {
           </Select>
         </div>
       </div>
-      <Link
+ {!auto_replace&& <Link
         href={"/listings?" + searchParams}
         className="hover:text-secondary btn btn-wide font-bold text-lg">
         Search
-      </Link>
+      </Link>}
     </div>
   );
 }

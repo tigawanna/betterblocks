@@ -6,6 +6,7 @@ interface UseSearchWithQuery {
   queries: Record<string, string>;
 }
 export function useUpdateSearchParams({ queries }: UseSearchWithQuery) {
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -20,10 +21,11 @@ export function useUpdateSearchParams({ queries }: UseSearchWithQuery) {
         params.delete(k);
       }
     });
-
-    startTransition(() => {
-      replace(`${pathname}?${params.toString()}`);
-    });
+      console.log({queries})
+    // startTransition(() => {
+    //   replace(`${pathname}?${params.toString()}`);
+    // });
   }, [queries]);
+
   return { pathname, searchParams };
 }
