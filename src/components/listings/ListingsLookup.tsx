@@ -37,7 +37,7 @@ export function ListingsLookup({}: ListingsLookupProps) {
           <Search height="16" width="16" className="" />
           <div className="w-full flex relative items-center">
             <Input
-              placeholder="Search"
+              placeholder="Search by keyword"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               className="w-full drop-shadow-md"
