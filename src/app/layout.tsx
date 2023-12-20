@@ -7,6 +7,8 @@ import { Mail, Phone } from "lucide-react";
 import { FaFacebookF, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { siteConfig } from "@/utils/site";
+import { PageContainer } from "@/components/navigation/drawer/PageContainer";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,6 @@ export const metadata: Metadata = {
   // ],
   icons: {
     icon: "/favicon.ico",
-  
   },
 };
 
@@ -31,8 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className + "flex flex-col gap-2"}>
         <TanstackProvider>
-          <Toolbar />
-          {children}
+          {/* <Toolbar /> */}
+          <PageContainer>{children}</PageContainer>
           <footer className="w-full flex items-center justify-center py-3 gap-2">
             <FaFacebookF className="h-5 w-5" />
             <FaWhatsapp className="h-5 w-5" />

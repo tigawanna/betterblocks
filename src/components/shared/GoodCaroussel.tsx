@@ -104,7 +104,8 @@ export const GoodImageCarousel = ({
     <div className=" w-full  h-full flex items-center justify-center gap-2 relative object-fit">
       {image.idx !== 0 ? (
         <ChevronLeft
-          className="w-24 h-32 absolute top-[10%] lg:top-[40%] lg:bottom-[40%]  left-[5%] z-20 bg-slate-500/20 rounded-md"
+          className="w-24 h-32 absolute top-[10%] lg:top-[40%] lg:bottom-[40%]  
+          left-[5%] z-20 bg-slate-500/20 rounded-md"
           onClick={() => {
             prevImage();
           }}
