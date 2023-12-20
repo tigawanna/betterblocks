@@ -106,6 +106,16 @@ export type PocketbookReactionsCollection = {
 };
 
 
+export type ListingPropertyJSON = {
+  name:string;
+  description:string;
+  location:{
+    city:string;
+    longitude:number;
+    latitude:number;
+  }
+}
+
 export type DistanceTofaclities =
   | "less than 20 minutes away"
   | "20 to 40 minutes away"
@@ -141,28 +151,30 @@ export interface ListingAmenities {
 
 export type MashambaListingsResponse = {
   location: string;
+  property:ListingPropertyJSON;
   longitude?: number;
   latitude?: number;
   description: string;
   images: Array<string>;
-  amenities?: any;
+  amenities?:ListingAmenities;
   owner?: string;
   price: number;
-  type:"land"|"house";
+  type:"land"|"house"|"";
   status: "available" | "sold";
 } & BaseCollectionRecord;
 
 export type MashambaListingsCreate = {
   location: string;
+  property:ListingPropertyJSON;
   longitude?: number;
   latitude?: number;
   description: string;
   images: MaybeArray<string>;
-  amenities?: any;
+  amenities?:ListingAmenities;
   owner?: string;
   price: number;
-  type: "land" | "house";
-  status: "available" | "sold";
+  type: "land" | "house" | "";
+  status: "available" | "sold"|"";
 };
 
 export type MashambaListingsUpdate = {
@@ -176,13 +188,13 @@ export type MashambaListingsUpdate = {
   description?: string;
   images?: MaybeArray<string>;
   "images-"?: MaybeArray<string>;
-  amenities?: any;
+  amenities?:ListingAmenities;
   owner?: string;
   price?: number;
   "price+"?: number;
   "price-"?: number;
-  type: "land" | "house";
-  status?: "available" | "sold";
+  type: "land" | "house" | "";
+  status?: "available" | "sold"|"";
 };
 
 export type MashambaListingsCollection = {
@@ -205,6 +217,7 @@ export type MashambaOwnerResponse = {
   email: string;
   phone: string;
   location: string;
+  property:ListingPropertyJSON;
   image: string;
   whatsapp?: string;
 } & BaseCollectionRecord;
@@ -214,6 +227,7 @@ export type MashambaOwnerCreate = {
   email: string;
   phone: string;
   location: string;
+  property:ListingPropertyJSON;
   image: string;
   whatsapp?: string;
 };

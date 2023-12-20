@@ -6,9 +6,7 @@ interface UseSearchWithQuery{
 search_query?:boolean
 default_value?:string
 }
-export function useSearchWithQuery(opts:UseSearchWithQuery={
-  search_query:true
-}) {
+export function useSearchWithQuery(opts:UseSearchWithQuery={search_query:true}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();

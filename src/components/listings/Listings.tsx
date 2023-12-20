@@ -1,7 +1,7 @@
 import { getFileURL } from "@/lib/pb/client";
 import { MashambaListingsResponse, MashambaOwnerResponse } from "@/lib/pb/db-types";
 import Link from "next/link";
-import { TypedRecord, expand, like, or, sort } from "typed-pocketbase";
+import { TypedRecord, and, eq, expand, like, or, sort } from "typed-pocketbase";
 import { tryCatchWrapper } from "@/utils/helpers/async";
 import { ListingsPagination } from "./controls/ListingsPagination";
 import { ListingsSearchbar } from "./controls/ListingsSearchbar";
@@ -13,18 +13,22 @@ interface ListingsProps {
   show_controls?: boolean;
   searchParams: {
     q?: string;
+    t?:""|"house"|"land";
     p?: number;
   };
 }
 
 export async function Listings({
   show_controls = true,
-  searchParams: { p = 1, q = "" },
+  searchParams: { p = 1, q = "",t="" },
 }: ListingsProps) {
   const { pb } = await server_component_pb();
   const res = await tryCatchWrapper(
     pb.collection("mashamba_listings").getList(p, 12, {
-      filter: or(like("location", q), like("description", q), like("owner.name", q)),
+      filter:and( 
+        or(like("location", q), like("description", q), like("owner.name", q)),
+        like("type",t)
+        ),
       expand: expand({ owner: true }),
       sort:sort("-created"),
     })
