@@ -1,5 +1,4 @@
 import Link from "next/link";
-import  MiniSettingsModal  from "./mini-settings/NoSSRMiniSettings";
 import { Castle, Menu } from "lucide-react";
 import { siteConfig } from "@/utils/site";
 
