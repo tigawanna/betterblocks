@@ -1,4 +1,24 @@
-export function isString(text?: string | null) {
+export function isValidString(text?: string | null) {
+  if (!text) {
+    return false;
+  }
+
+  if (text.length < 1) {
+    return false;
+  }
+  return true;
+}
+export function isValidNumber(digut?: number| null) {
+  if (!digut) {
+    return false;
+  }
+
+  if (digut< 1) {
+    return false;
+  }
+  return true;
+}
+export function isNumberString(text?: string | null) {
   if (!text) {
     return false;
   }

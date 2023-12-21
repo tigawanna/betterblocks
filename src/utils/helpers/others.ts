@@ -1,4 +1,4 @@
-import { isStringaUrl } from "./urls";
+import { isValidStringaUrl } from "./urls";
 
 export function numberToArray(num: number) {
   return Array.from({ length: num }, (_, index) => index + 1);
@@ -58,6 +58,6 @@ export function randownNumber(min: number, max: number) {
  * @return {string} The generated image URL
  */
 export function randomImageURL(img_url?: string) {
-  if (img_url && isStringaUrl(img_url)) return img_url;
+  if (img_url && isValidStringaUrl(img_url)) return img_url;
   return `https://picsum.photos/id/${randownNumber(1, 1000)}/900/300`;
 }

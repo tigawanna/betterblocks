@@ -22,7 +22,7 @@ export function stringOrURLToString(url: string | URL) {
   }
 }
 
-export function isStringaUrl(link: string | undefined) {
+export function isValidStringaUrl(link: string | undefined) {
   if (!link || !link.trim() || link.trim().length < 1) return false;
   try {
     new URL(link);
