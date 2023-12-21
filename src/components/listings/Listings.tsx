@@ -14,7 +14,7 @@ interface ListingsProps {
   show_controls?: boolean;
   searchParams: {
     q?: string;
-    t?: "" | "house" | "land";
+    t?: "" | "house" | "land"|"all";
     p?: number;
   };
 }
@@ -23,12 +23,13 @@ export async function Listings({
   show_controls = true,
   searchParams: { p = 1, q = "", t = "" },
 }: ListingsProps) {
+  const land_type = t==="all"?"":t
   const { pb } = await server_component_pb();
   const res = await tryCatchWrapper(
     pb.collection("mashamba_listings").getList(p, 12, {
       filter: and(
         or(like("location", q), like("description", q), like("owner.name", q)),
-        like("type", t)
+        like("type", land_type)
       ),
       expand: expand({ owner: true }),
       sort: sort("-created"),
@@ -49,8 +50,13 @@ export async function Listings({
             return <ListingsCard key={land.id} listing={land} />;
           })}
       </div>
+      <div className="w-[90%] p-2 flex justify-center items-center">
+        <p className="bg-base-200 flex justify-center items-center
+        rounded-lg p-5 w-full md:w-[60%] min-w-[60%] min-h-[300px] text-lg shadow-sm shadow-accent">
+          No listings found</p>
+      </div>
       {page_details && show_controls && <ListingsPagination page_details={page_details} />}
-      {!show_controls && (
+      {!show_controls && listings && (
         <Link href="/listings" className="py-5 text-lg hover:underline hover:text-sky-500">
           See more listings
         </Link>

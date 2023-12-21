@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default async function ListingsPage({ searchParams }: PageProps) {
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-3 min-h-screen h-full">
       <h1 className="text-3xl font-bold ">Listings</h1>
       <Suspense fallback={<ListingsCardLoader no={12} />}>
      <Listings searchParams={searchParams}/>
