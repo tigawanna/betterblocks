@@ -30,11 +30,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className + "flex flex-col gap-2"}>
+      <body className={inter.className + "flex flex-col gap-5"}>
         <TanstackProvider>
           {/* <Toolbar /> */}
           <PageContainer>{children}</PageContainer>
-          <footer className="w-full flex items-center justify-center py-3 gap-2">
+          <footer className="w-full flex items-center justify-center py-12 gap-2 bg-base-200">
             <FaFacebookF className="h-5 w-5" />
             <FaWhatsapp className="h-5 w-5" />
             <FaInstagram className="h-5 w-5" />

@@ -6,12 +6,12 @@ export const siteConfig = {
 	navItems: [
 		{ label: "Listings", href: "/listings" },
 		{ label: "About", href: "/about" },
-		{ label: "Showcase", href: "/showcase" },
+		// { label: "Showcase", href: "/showcase" },
 	],
 	navMenuItems: [
 		{	label: "Listings",	href: "/listings"},
 		{	label: "About",	href: "/about"},
-		{	label: "Showcase",	href: "/showcase"},
+		// {	label: "Showcase",	href: "/showcase"},
 	
 	],
 	links: {

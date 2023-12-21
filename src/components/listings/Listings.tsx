@@ -38,7 +38,7 @@ export async function Listings({
   const listings = show_controls ? res.data?.items : res.data?.items.slice(0, 3);
   const page_details = res.data;
   return (
-    <div className="w-full h-full flex flex-col items-center gap-5">
+    <div className="w-full h-full flex flex-col items-center gap-5 pb-5">
       {/* 
       {show_controls && <ListingsSearchbar />} */}
       <div className="w-[90%] px-5 sticky top-14 z-50">
@@ -50,11 +50,14 @@ export async function Listings({
             return <ListingsCard key={land.id} listing={land} />;
           })}
       </div>
-      <div className="w-[90%] p-2 flex justify-center items-center">
+
+  {(!listings||listings?.length<1)&&
+    <div className="w-[90%] p-2 flex justify-center items-center">
         <p className="bg-base-200 flex justify-center items-center
         rounded-lg p-5 w-full md:w-[60%] min-w-[60%] min-h-[300px] text-lg shadow-sm shadow-accent">
           No listings found</p>
-      </div>
+      </div>}
+
       {page_details && show_controls && <ListingsPagination page_details={page_details} />}
       {!show_controls && listings && (
         <Link href="/listings" className="py-5 text-lg hover:underline hover:text-sky-500">

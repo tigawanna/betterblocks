@@ -7,7 +7,7 @@ children: React.ReactNode
 }
 
 export function PageContainer({children}:pageContainerProps){
-      const links = siteConfig.navItems;
+const links = siteConfig.navItems;
 return (
   <div className="drawer">
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
